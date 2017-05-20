@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sumobot</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<!-- jQuery -->
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<!-- stylesheet -->
+<link rel="stylesheet" href="/static/css/style.css" />
+<script type="text/javascript">
+// post method
+function post(value){
+	var data = {
+	    	"type": "gpio",
+		"value": value
+	};
+	$.post("/action", data);
+}
+</script>
+</head>
+<body id="body">
+<div align="center">
+<h1>Sumobot Controller/v</h1>
+<!-- post begin -->
+<div>
+	<button type="button" id="gpio_wakeup" onClick="post('w');" >Wakeup</button> &nbsp;
+	<button type="button" id="gpio_quit" onClick="post('q');" >Quit</button><br/>
+</div>
+<br/>
+<img src="http://rpi.local:8080/?action=stream" />
+<table>
+<!-- 1st row -->
+<tr><td></td>
+<td><input type="image" src="/static/images/robot_forward.png" onClick="post('f');" /></td>
+<td></td></tr>
+<!-- 2nd row -->
+<tr><td><input type="image" src="/static/images/robot_left.png"  onClick="post('l');" /></td>
+<td><input type="image" src="/static/images/robot_stop.png"  onClick="post('s');" /></td>
+<td><input type="image" src="/static/images/robot_right.png"  onClick="post('r');" /></td></tr>
+<tr><td></td>
+<!-- 3rd row -->
+<td><input type="image" src="/static/images/robot_back.png"  onClick="post('b');" /></td>
+<td></td></tr>
+</table>
+<!-- post end -->
+</div>
+</body>
+</html>
